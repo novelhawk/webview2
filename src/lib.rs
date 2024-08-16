@@ -1064,13 +1064,7 @@ impl WebView {
 }
 
 impl WebView_2 {
-    pub fn get_cookie_manager(&self) -> Result<CookieManager> {
-        let mut ppv: *mut *mut ICoreWebView2CookieManagerVTable = ptr::null_mut();
-        check_hresult(unsafe { self.inner.get_cookie_manager(&mut ppv) })?;
-        Ok(CookieManager {
-            inner: unsafe { add_ref_to_rc(ppv) },
-        })
-    }
+    get_interface!(get_cookie_manager, CookieManager);
 }
 
 impl CookieManager {
